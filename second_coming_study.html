@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Second Coming: Keep Watch, Be Ready</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f8f6f0 0%, #e8e2d4 100%);
+            min-height: 100vh;
+            color: #2c2c2c;
+            position: relative;
+        }
+        
+        body::before {
+            content: '@FaythFilled';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 120px;
+            color: rgba(212, 175, 55, 0.05);
+            font-weight: bold;
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo-section {
+            background: radial-gradient(circle, #1a1a1a 40%, transparent 70%);
+            color: #d4af37;
+            padding: 40px;
+            border-radius: 50%;
+            margin: 0 auto 30px auto;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            border: 4px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-section::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #d4af37, #b8860b, #d4af37, #b8860b);
+            z-index: -1;
+            animation: rotate 8s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .cross-rays {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cross-rays::before,
+        .cross-rays::after {
+            content: '';
+            position: absolute;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+        
+        .cross-rays::before {
+            width: 80%;
+            height: 2px;
+        }
+        
+        .cross-rays::after {
+            width: 2px;
+            height: 80%;
+        }
+        
+        .dove-symbol {
+            position: absolute;
+            top: 35px;
+            font-size: 28px;
+            color: #d4af37;
+            z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: #d4af37;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            z-index: 2;
+            position: relative;
+            margin-top: 15px;
+        }
+        
+        .study-title {
+            font-size: 42px;
+            color: #1a1a1a;
+            margin: 30px 0 10px 0;
+            font-weight: bold;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.3);
+        }
+        
+        .study-subtitle {
+            font-size: 24px;
+            color: #d4af37;
+            font-style: italic;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            border-radius: 20px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 2px solid #d4af37;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: #d4af37;
+        }
+        
+        .hero-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .hero-text {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #d4af37, #b8860b);
+        }
+        
+        .day-section {
+            position: relative;
+            background: linear-gradient(135deg, #ffffff, #f8f6f0);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid #d4af37;
+            border: 1px solid #e0d4c0;
+        }
+        
+        .day-number {
+            position: absolute;
+            left: -60px;
+            top: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            color: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 3px solid #d4af37;
+        }
+        
+        .day-title {
+            font-size: 20px;
+            color: #1a1a1a;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .reflection-section {
+            margin-bottom: 25px;
+        }
+        
+        .reflection-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .reflection-text {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f6f0, #f0ede5);
+            border-radius: 10px;
+            border-left: 4px solid #d4af37;
+            border: 1px solid #e0d4c0;
+            color: #2c2c2c;
+        }
+        
+        .scriptures {
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #d4af37;
+            color: #f0f0f0;
+        }
+        
+        .scriptures h4 {
+            color: #d4af37;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .scripture-list {
+            list-style: none;
+        }
+        
+        .scripture-list li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .scripture-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+        }
+        
+        .questions {
+            background: linear-gradient(135deg, #f8f6f0, #f0ede5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #1a1a1a;
+            color: #2c2c2c;
+        }
+        
+        .questions h4 {
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .questions ol {
+            padding-left: 20px;
+        }
+        
+        .questions li {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        
+        .prayer-section {
+            background: linear-gradient(135deg, #f8f6f0, #e8e2d4);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 2px solid #d4af37;
+            color: #2c2c2c;
+        }
+        
+        .prayer-title {
+            color: #d4af37;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .prayer-text {
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .weekly-reflection {
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            color: #f0f0f0;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            border: 3px solid #d4af37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .weekly-title {
+            color: #d4af37;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .themes-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .themes-list li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .themes-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+        }
+        
+        .action-steps {
+            background: linear-gradient(135deg, #f8f6f0, #f0ede5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #d4af37;
+            color: #2c2c2c;
+        }
+        
+        .action-title {
+            color: #1a1a1a;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .action-list {
+            padding-left: 20px;
+        }
+        
+        .action-list li {
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+        
+        .website {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .study-title {
+                font-size: 28px;
+            }
+            
+            .study-subtitle {
+                font-size: 18px;
+            }
+            
+            .timeline {
+                padding-left: 30px;
+            }
+            
+            .day-number {
+                left: -45px;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <div class="cross-rays"></div>
+                <div class="dove-symbol">🕊️</div>
+                <div class="logo-text">Fayth Filled</div>
+            </div>
+            
+            <h1 class="study-title">The Second Coming</h1>
+            <h2 class="study-subtitle">"Keep Watch, Be Ready"</h2>
+            
+            <div class="hero-image">
+                <div class="hero-content">
+                    <span class="hero-icon">⏰</span>
+                    <div class="hero-text">Stay Alert & Prepared</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <!-- Day 1 -->
+            <div class="day-section">
+                <div class="day-number">1</div>
+                <div class="day-title">📘 Study Guide — Day 1</div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">🌟 Reflection (EN):</div>
+                    <div class="reflection-text">
+                        The second coming of Christ is certain but unknown in timing. Jesus urges us to be vigilant and sober, living lives free from the pull of worldly distractions. Preparing for His return means prioritizing God's kingdom daily and being ready to stand firm whenever He calls us home.
+                    </div>
+                </div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">✨ Reflexión (ES):</div>
+                    <div class="reflection-text">
+                        La segunda venida de Cristo es segura pero desconocida en el tiempo. Jesús nos insta a estar vigilantes y sobrios, viviendo vidas libres del apego a las distracciones mundanas. Prepararse para Su regreso significa priorizar el reino de Dios diariamente y estar listos para mantenerse firmes cuando Él nos llame a casa.
+                    </div>
+                </div>
+                
+                <div class="scriptures">
+                    <h4>📖 Key Scriptures:</h4>
+                    <ul class="scripture-list">
+                        <li>Matthew 24:42</li>
+                        <li>1 Thessalonians 5:2-3</li>
+                        <li>2 Peter 3:10</li>
+                    </ul>
+                </div>
+                
+                <div class="questions">
+                    <h4>🤔 Devotional Questions:</h4>
+                    <ol>
+                        <li>How can you cultivate a daily readiness for Jesus' return in your life?</li>
+                        <li>What distractions or habits might keep you from living alert and prepared?</li>
+                        <li>How does the promise of Christ's return influence your choices and priorities?</li>
+                    </ol>
+                </div>
+                
+                <div class="prayer-section">
+                    <div class="prayer-title">🛐 Prayer (EN):</div>
+                    <div class="prayer-text">
+                        Heavenly Father, help me live with expectancy and readiness for Your coming. Cleanse my heart from distractions and anchor me in Your kingdom purpose. May I be found faithful when You return. Amen.
+                    </div>
+                    
+                    <div class="prayer-title">🛐 Oración (ES):</div>
+                    <div class="prayer-text">
+                        Padre Celestial, ayúdame a vivir con expectación y preparación para Tu venida. Limpia mi corazón de distracciones y ancla mi propósito en Tu reino. Que sea hallado fiel cuando regreses. Amén.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 2 -->
+            <div class="day-section">
+                <div class="day-number">2</div>
+                <div class="day-title">📘 Study Guide — Day 2</div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">🌟 Reflection (EN):</div>
+                    <div class="reflection-text">
+                        Living in the hope of Jesus' return shapes how we live today. Prayer keeps us alert, abiding in Christ gives us confidence, and remembering His coming motivates us to holiness. This week, ask God to cultivate holy anticipation in your heart, keeping your eyes fixed on the eternal prize.
+                    </div>
+                </div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">✨ Reflexión (ES):</div>
+                    <div class="reflection-text">
+                        Vivir con la esperanza del regreso de Jesús moldea cómo vivimos hoy. La oración nos mantiene alerta, permanecer en Cristo nos da confianza, y recordar Su venida nos motiva a la santidad. Esta semana, pide a Dios que cultive en tu corazón una santa anticipación, manteniendo tus ojos en el premio eterno.
+                    </div>
+                </div>
+                
+                <div class="scriptures">
+                    <h4>📖 Key Scriptures:</h4>
+                    <ul class="scripture-list">
+                        <li>Revelation 22:12</li>
+                        <li>Luke 21:36</li>
+                        <li>1 John 2:28</li>
+                    </ul>
+                </div>
+                
+                <div class="questions">
+                    <h4>🤔 Devotional Questions:</h4>
+                    <ol>
+                        <li>What does it mean to "abide in Christ" in your daily life?</li>
+                        <li>How can prayer help you stay spiritually alert?</li>
+                        <li>In what ways can you live today with holy anticipation for Jesus' return?</li>
+                    </ol>
+                </div>
+                
+                <div class="prayer-section">
+                    <div class="prayer-title">🛐 Prayer (EN):</div>
+                    <div class="prayer-text">
+                        Heavenly Father, help me abide in You and live with holy anticipation for Your return. Strengthen me through prayer and keep my heart focused on Your kingdom. May I be ready and confident when You come. Amen.
+                    </div>
+                    
+                    <div class="prayer-title">🛐 Oración (ES):</div>
+                    <div class="prayer-text">
+                        Padre Celestial, ayúdame a permanecer en Ti y vivir con santa anticipación para Tu regreso. Fortaléceme mediante la oración y mantén mi corazón enfocado en Tu reino. Que esté listo y confiado cuando vengas. Amén.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="day-section">
+                <div class="day-number">3</div>
+                <div class="day-title">📘 Study Guide — Day 3</div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">🌟 Reflection (EN):</div>
+                    <div class="reflection-text">
+                        The second coming of Jesus isn't a warning—it's a promise. But this promise invites us to walk differently. We are not asleep like the world—we're awake, alert, and anchored in hope. Jesus wants a Bride who is ready, not distracted or delayed. Every act of obedience, every prayer, every surrender—counts in eternity.
+                    </div>
+                </div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">✨ Reflexión (ES):</div>
+                    <div class="reflection-text">
+                        La segunda venida de Jesús no es solo una advertencia—es una promesa. Pero esta promesa nos llama a vivir de manera diferente. No estamos dormidos como el mundo; estamos despiertos, alertas y anclados en esperanza. Jesús quiere una Novia preparada, no distraída. Cada acto de obediencia, cada oración, cada rendición—cuenta para la eternidad.
+                    </div>
+                </div>
+                
+                <div class="scriptures">
+                    <h4>📖 Key Scriptures:</h4>
+                    <ul class="scripture-list">
+                        <li>Romans 13:12</li>
+                        <li>Colossians 3:2</li>
+                        <li>1 John 3:3</li>
+                    </ul>
+                </div>
+                
+                <div class="questions">
+                    <h4>🤔 Devotional Questions:</h4>
+                    <ol>
+                        <li>If Jesus came tonight, what would He find in your heart?</li>
+                        <li>What distractions do you need to lay down to live fully awake?</li>
+                        <li>How can you set your mind more on eternity this week?</li>
+                    </ol>
+                </div>
+                
+                <div class="prayer-section">
+                    <div class="prayer-title">🛐 Prayer (EN):</div>
+                    <div class="prayer-text">
+                        Heavenly Father, Thank You for the promise of Jesus' return. Awaken my heart to live like the day is near. Help me cast off anything that keeps me spiritually asleep. Teach me to walk in the light and stay ready. Fix my mind on heaven. Let me long for You more than this world. In Jesus' name, Amen.
+                    </div>
+                    
+                    <div class="prayer-title">🛐 Oración (ES):</div>
+                    <div class="prayer-text">
+                        Padre Celestial, Gracias por la promesa del regreso de Jesús. Despierta mi corazón para vivir como si el día estuviera cerca. Ayúdame a desechar todo lo que me adormece espiritualmente. Enséñame a caminar en la luz y estar listo. Fija mi mente en el cielo. Haz que te anhele más que a este mundo. En el nombre de Jesús, Amén.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="day-section">
+                <div class="day-number">4</div>
+                <div class="day-title">📘 Study Guide — Day 4</div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">🌟 Reflection (EN):</div>
+                    <div class="reflection-text">
+                        It's easy to get distracted by everyday worries—but these scriptures are our wake-up call. The second coming is not a distant threat—it's a glorious promise. We don't fear it; we hope for it. Living ready means keeping our hearts clean, our hands open, and our eyes on the King.
+                    </div>
+                </div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">✨ Reflexión (ES):</div>
+                    <div class="reflection-text">
+                        Es fácil distraerse con las preocupaciones diarias, pero estas escrituras son nuestra llamada de atención. La segunda venida no es una amenaza lejana—es una gloriosa promesa. No la tememos; la esperamos con esperanza. Vivir preparados significa tener el corazón limpio, las manos abiertas y los ojos puestos en el Rey.
+                    </div>
+                </div>
+                
+                <div class="scriptures">
+                    <h4>📖 Key Scriptures:</h4>
+                    <ul class="scripture-list">
+                        <li>1 Thessalonians 4:16</li>
+                        <li>Colossians 3:4</li>
+                        <li>James 5:7</li>
+                    </ul>
+                </div>
+                
+                <div class="questions">
+                    <h4>🤔 Devotional Questions:</h4>
+                    <ol>
+                        <li>If Jesus returned today, what would He find you doing?</li>
+                        <li>What worldly distractions do you need to lay down?</li>
+                        <li>How can you encourage someone else to stay ready?</li>
+                    </ol>
+                </div>
+                
+                <div class="prayer-section">
+                    <div class="prayer-title">🛐 Prayer (EN):</div>
+                    <div class="prayer-text">
+                        Heavenly Father, Thank You for reminding us that this world is not our home. We long for Your return. Help us live with urgency and love, not fear. Make us faithful in every moment. Cleanse our hearts, fill our lives with purpose, and awaken us to eternity. In Jesus' name, amen.
+                    </div>
+                    
+                    <div class="prayer-title">🛐 Oración (ES):</div>
+                    <div class="prayer-text">
+                        Padre Celestial, Gracias por recordarnos que este mundo no es nuestro hogar. Anhelamos Tu regreso. Ayúdanos a vivir con urgencia y amor, no con temor. Haznos fieles en cada momento. Limpia nuestros corazones, llena nuestras vidas de propósito y despiértanos a la eternidad. En el nombre de Jesús, amén.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="day-section">
+                <div class="day-number">5</div>
+                <div class="day-title">📘 Study Guide — Day 5</div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">🌟 Reflection (EN):</div>
+                    <div class="reflection-text">
+                        Today's scriptures ring like an alarm in a sleeping world. Jesus will return, not metaphorically, but physically. This isn't a fear tactic—it's a love invitation. If you knew the King was coming tomorrow, would your heart be ready today? Let this be a call to purify our motives, renew our hope, and stay alert in love and obedience.
+                    </div>
+                </div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">✨ Reflexión (ES):</div>
+                    <div class="reflection-text">
+                        Las escrituras de hoy suenan como una alarma en un mundo dormido. Jesús regresará, no de forma simbólica, sino real. No es para temer, sino para amar. Si supieras que el Rey viene mañana, ¿tu corazón estaría listo hoy? Que esto sea un llamado a purificar nuestras intenciones, renovar nuestra esperanza y mantenernos despiertos en amor y obediencia.
+                    </div>
+                </div>
+                
+                <div class="scriptures">
+                    <h4>📖 Key Scriptures:</h4>
+                    <ul class="scripture-list">
+                        <li>Matthew 24:44</li>
+                        <li>1 Thessalonians 5:2-3</li>
+                        <li>1 John 3:3</li>
+                    </ul>
+                </div>
+                
+                <div class="questions">
+                    <h4>🤔 Devotional Questions:</h4>
+                    <ol>
+                        <li>What does "living ready" look like for you personally?</li>
+                        <li>Are there any areas of your life you feel called to surrender today?</li>
+                        <li>How does hope in Christ's return motivate your daily choices?</li>
+                    </ol>
+                </div>
+                
+                <div class="prayer-section">
+                    <div class="prayer-title">🛐 Prayer (EN):</div>
+                    <div class="prayer-text">
+                        Heavenly Father, Thank You for the promise of Your return. Help me to live with holy expectation, to walk in love and obedience, and to keep my eyes fixed on You. Remove anything in my heart that clings to the things of this world. Let me be found faithful, pure, and full of hope. Come, Lord Jesus. Amen.
+                    </div>
+                    
+                    <div class="prayer-title">🛐 Oración (ES):</div>
+                    <div class="prayer-text">
+                        Padre Celestial, Gracias por la promesa de Tu regreso. Ayúdame a vivir con expectativa santa, a caminar en amor y obediencia, y a mantener mis ojos en Ti. Quita de mi corazón todo lo que se aferra a este mundo. Que me encuentres fiel, puro y lleno de esperanza. Ven, Señor Jesús. Amén.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 6 -->
+            <div class="day-section">
+                <div class="day-number">6</div>
+                <div class="day-title">📘 Study Guide — Day 6</div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">🌟 Reflection (EN):</div>
+                    <div class="reflection-text">
+                        Waiting doesn't mean forgetting. Jesus will return—and not in silence, but with glory and justice. Every warning, every promise is soaked in love. We're not left to wonder if He's coming—we're invited to live in hopeful expectation that He is. Stay alert. Stay clothed in truth. Stay ready.
+                    </div>
+                </div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">✨ Reflexión (ES):</div>
+                    <div class="reflection-text">
+                        Esperar no significa olvidar. Jesús regresará—y no en silencio, sino con gloria y justicia. Cada advertencia, cada promesa está empapada de amor. No se nos deja preguntando si Él viene—somos invitados a vivir con esperanza expectante de que así es. Mantente alerta. Mantente vestido de verdad. Mantente listo.
+                    </div>
+                </div>
+                
+                <div class="scriptures">
+                    <h4>📖 Key Scriptures:</h4>
+                    <ul class="scripture-list">
+                        <li>Luke 21:36</li>
+                        <li>Revelation 16:15</li>
+                        <li>Colossians 3:4</li>
+                    </ul>
+                </div>
+                
+                <div class="questions">
+                    <h4>🤔 Devotional Questions:</h4>
+                    <ol>
+                        <li>What does it mean to "appear with Christ in glory"?</li>
+                        <li>What daily rhythms help you stay spiritually "ready"?</li>
+                        <li>Are there areas of your heart or life you've left "unclothed" spiritually?</li>
+                    </ol>
+                </div>
+                
+                <div class="prayer-section">
+                    <div class="prayer-title">🛐 Prayer (EN):</div>
+                    <div class="prayer-text">
+                        Heavenly Father, Thank You for Your promises and Your patience. I long for the day Christ appears in glory—and I want to be found faithful. Help me to stay awake, to live prepared, and to walk in the righteousness You've given. Keep me clothed in truth. Keep my heart expectant. And above all, help me to reflect Your love until the day You return. In Jesus' name, Amen.
+                    </div>
+                    
+                    <div class="prayer-title">🛐 Oración (ES):</div>
+                    <div class="prayer-text">
+                        Padre Celestial, Gracias por Tus promesas y Tu paciencia. Anhelo el día en que Cristo se manifieste en gloria—y quiero ser hallado fiel. Ayúdame a mantenerme despierto, a vivir preparado y a andar en la justicia que Tú me has dado. Vísteme con la verdad. Mantén mi corazón expectante. Y sobre todo, ayúdame a reflejar Tu amor hasta el día de Tu regreso. En el nombre de Jesús, Amén.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 7 -->
+            <div class="day-section">
+                <div class="day-number">7</div>
+                <div class="day-title">📘 Study Guide — Day 7: "The Bride Made Ready"</div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">🌟 Reflection (EN):</div>
+                    <div class="reflection-text">
+                        The Church is called the Bride of Christ—and her role is to prepare. This preparation is spiritual, not ceremonial. It means living with urgency, hope, obedience, and joy, knowing our Savior will return. Not in fear, but in reverent expectation. He's not delaying—He's being merciful. Let us be found ready.
+                    </div>
+                </div>
+                
+                <div class="reflection-section">
+                    <div class="reflection-title">✨ Reflexión (ES):</div>
+                    <div class="reflection-text">
+                        La Iglesia es llamada la Esposa de Cristo—y su papel es prepararse. Esta preparación es espiritual, no ceremonial. Significa vivir con urgencia, esperanza, obediencia y gozo, sabiendo que nuestro Salvador regresará. No en temor, sino en expectativa reverente. Él no se demora—está siendo misericordioso. Que nos encuentre listos.
+                    </div>
+                </div>
+                
+                <div class="scriptures">
+                    <h4>📖 Key Scriptures:</h4>
+                    <ul class="scripture-list">
+                        <li>Revelation 19:7</li>
+                        <li>James 5:8</li>
+                        <li>1 Thessalonians 5:11</li>
+                    </ul>
+                </div>
+                
+                <div class="questions">
+                    <h4>🤔 Devotional Questions:</h4>
+                    <ol>
+                        <li>What does it mean for the Bride to "make herself ready" for Christ's return?</li>
+                        <li>How can you encourage others in your faith community as we wait for Jesus?</li>
+                        <li>In what ways can you live with both urgency and patience regarding His return?</li>
+                    </ol>
+                </div>
+                
+                <div class="prayer-section">
+                    <div class="prayer-title">🛐 Prayer (EN):</div>
+                    <div class="prayer-text">
+                        Heavenly Father, Thank You for choosing us as Your Bride. Help us to prepare our hearts with purity, love, and anticipation for Your return. Strengthen us to encourage one another and to live each day as faithful servants awaiting our King. May we be found clothed in righteousness, hearts burning with love for You, and hands busy with Your work. Come quickly, Lord Jesus. We are waiting for You. Amen.
+                    </div>
+                    
+                    <div class="prayer-title">🛐 Oración (ES):</div>
+                    <div class="prayer-text">
+                        Padre Celestial, Gracias por elegirnos como Tu Esposa. Ayúdanos a preparar nuestros corazones con pureza, amor y expectativa por Tu regreso. Fortalécenos para animarnos unos a otros y vivir cada día como siervos fieles esperando a nuestro Rey. Que nos encuentres vestidos de justicia, corazones ardiendo de amor por Ti, y manos ocupadas en Tu obra. Ven pronto, Señor Jesús. Te estamos esperando. Amén.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Reflection -->
+        <div class="weekly-reflection">
+            <div class="weekly-title">📚 Weekly Reflection - Week 4: "Keep Watch, Be Ready"</div>
+            
+            <div class="reflection-section">
+                <div class="reflection-title">🌟 Weekly Summary (EN):</div>
+                <div class="reflection-text">
+                    This week we've focused on the glorious truth of Christ's second coming. From the trumpet call that will split the heavens to the marriage supper of the Lamb, we've been reminded that Jesus is not just our Savior—He's our coming King. The call to readiness isn't about fear; it's about love, hope, and faithful preparation. As His Bride, we live in expectant joy, knowing that every day brings us closer to seeing Him face to face.
+                </div>
+            </div>
+            
+            <div class="reflection-section">
+                <div class="reflection-title">✨ Resumen Semanal (ES):</div>
+                <div class="reflection-text">
+                    Esta semana nos hemos enfocado en la gloriosa verdad de la segunda venida de Cristo. Desde el sonido de trompeta que dividirá los cielos hasta las bodas del Cordero, hemos recordado que Jesús no es solo nuestro Salvador—es nuestro Rey que viene. El llamado a estar preparados no es sobre temor; es sobre amor, esperanza y preparación fiel. Como Su Esposa, vivimos en gozo expectante, sabiendo que cada día nos acerca más a verle cara a cara.
+                </div>
+            </div>
+
+            <div class="reflection-section">
+                <div class="reflection-title">🎯 Key Themes This Week:</div>
+                <ul class="themes-list">
+                    <li>The certainty of Christ's return</li>
+                    <li>Living with eternal perspective</li>
+                    <li>Spiritual preparation and purity</li>
+                    <li>The Bride of Christ made ready</li>
+                    <li>Encouraging one another in faith</li>
+                    <li>Patience combined with urgency</li>
+                </ul>
+            </div>
+
+            <div class="action-steps">
+                <div class="action-title">🚀 Action Steps for the Coming Week:</div>
+                <ol class="action-list">
+                    <li>Daily examine your heart for areas that need surrender</li>
+                    <li>Encourage at least one person in their faith journey</li>
+                    <li>Practice living with eternal perspective in daily decisions</li>
+                    <li>Spend time in worship, preparing your heart as His Bride</li>
+                    <li>Share the hope of Christ's return with someone who needs hope</li>
+                </ol>
+            </div>
+
+            <div class="prayer-section">
+                <div class="prayer-title">🛐 Final Prayer (EN):</div>
+                <div class="prayer-text">
+                    Lord Jesus, thank You for the blessed hope of Your return. Help us to live each day with the knowledge that You are coming back for us. Keep our hearts pure, our faith strong, and our love burning bright. May we be found faithful servants and a prepared Bride when You appear. Even so, come quickly, Lord Jesus. Amen.
+                </div>
+                
+                <div class="prayer-title">🛐 Oración Final (ES):</div>
+                <div class="prayer-text">
+                    Señor Jesús, gracias por la esperanza bendita de Tu regreso. Ayúdanos a vivir cada día sabiendo que regresas por nosotros. Mantén nuestros corazones puros, nuestra fe fuerte y nuestro amor ardiendo. Que nos encuentres como siervos fieles y una Esposa preparada cuando aparezcas. Aun así, ven pronto, Señor Jesús. Amén.
+                </div>
+            </div>
+        </div>
+        
+        <div class="website">
+            @FaythFilled
+        </div>
+    </div>
+</body>
+</html>
